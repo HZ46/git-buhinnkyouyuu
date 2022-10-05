@@ -1,0 +1,40 @@
+<section class="wrapper flex">
+	<div class="content">
+		<h2 class="section-ttl">商品一覧 (全<%= @all_items_count %>件)</h2>
+		
+	<div class="search-form">
+  <%= form_with url: search_path, method: :get, local: true do |f| %>
+    <%= f.text_field :keyword, value: @keyword %>
+    <%= f.submit "検索" %>
+  <% end %>
+</div>
+<div class="item-list">
+  <% @items.each do |item| %>
+    <%= item.name %>
+  <% end %>
+</div>
+		
+		<% if @items.first %> <!-- @item.existsと同義、SQL1個分削減(?) -->
+			<div class="items">
+				<% @items.each do |item| %>
+					<%= link_to item_path(item) do %>
+						<%= image_tag item.get_image, format: "jpeg", fallback: "no-image.png" %>
+						<h5><%= item.genre.name %></h5>
+						<p><%= item.name %></p>
+						<p>
+							<%= item.with_tax_price %>円 
+							<% if item.is_active? %>
+								<span class="text-active">販売中</span>
+							<% else %>
+								<span class="text-invalid">販売停止中</span>
+							<% end %>
+						</p>
+					<% end %>
+				<% end %>
+			</div>
+			<%= paginate @items %>
+		<% else %>
+			<h3>対応する商品はありませんでした。</h3>
+		<% end %>
+	</div>
+</section>

@@ -1,0 +1,16 @@
+ ja:
+    enums:
+      order:
+        status:
+          accepting: '承り中'
+          preparing_for_delivery: 'お届け準備中'
+          in_delivery: '配達中'
+          delivered: 'お届け済み'
+      order_detail:
+        making_status:
+          cannot_start: '着手不可'
+          
+          picking: 'ピッキング中'
+          completed: '製作完了'
+
+        

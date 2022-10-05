@@ -1,0 +1,35 @@
+<section class="inner">
+	<h2 class="section-ttl">注文情報確認</h2>
+	<div class="flex">
+		<table class="confirm_cart_items mr2 mb3 has_border">
+			<thead>
+				<tr>
+					<th colspan="2">商品名</th>
+					<th>数量</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @cart_items.each do |cart_item| %>
+					<% item = cart_item.item %>
+					<tr>
+						<td>
+							<%= image_tag item.get_image, class: "cart_item_image" %>
+						</td>
+						<td><%= item.name %></td>
+						<td><%= cart_item.amount %></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+	<%= form_with model:@order, url: orders_path do |f| %>
+		<div class="field">
+			<label>お届け先</label>
+			<p><%= @order.delivery_department %> </p>
+			<%= f.hidden_field :delivery_department, value: @order.postal_code %>
+			
+		</div>
+		<div class="actions text-center">
+			<%= f.submit "注文を確定する", class: "btn btn-primary submit_to_create_order" %>
+		</div>
+	<% end %>
+</section>

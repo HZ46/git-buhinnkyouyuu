@@ -5,3 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+admin = Admin.create!(:email => 'admin.com', :encrypted_password => '114466')
+# User.create!(name: 'ゲスト', email: 'gest@sample.com')
+# モデル名.create!(カラム名: 値)
+admin.save!
