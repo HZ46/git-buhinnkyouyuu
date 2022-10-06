@@ -7,14 +7,8 @@ class Admin::ItemsController < ApplicationController
   end
 
   def index
-    if params[:genre_id]
-      @genre = Genre.find(params[:genre_id])
-      all_items = @genre.items
-    else
-      all_items = Item.includes(:genre)
-    end
-    @items = all_items.page(params[:page])
-    @all_items_count = all_items.count
+    @items = Item.all
+    #@all_items_count = all_items.count
   end
 
   def create
@@ -36,7 +30,7 @@ class Admin::ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :introduction, :image,  :is_active)
+    params.require(:item).permit(:name, :introduction, :image, :amount,  :is_active)
   end
 
   def ensure_item

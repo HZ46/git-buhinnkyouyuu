@@ -1,4 +1,21 @@
 <section class="inner">
 	<h2 class="section-ttl"><%= @item.name %>の編集</h2>
-  <%= render 'form', item: @item, url: admin_item_path(@item), submit: '更新' %>
+  <%= form_with model: @item, url: admin_item_path(@item) do |f| %>
+     <p>部品画像</p>
+      <%= f.file_field :image, accept: "image/*" %>
+   <p>部品名</p>
+      <%= f.text_field :name %>
+   <p>部品説明</p>
+      <%= f.text_area :introduction %>
+   <p>個数</p>
+      <%= f.text_field :amount %>
+      <p>在庫ステータス</p>
+      <label>
+　　　　<%= f.radio_button :is_active, "true" %> 在庫あり
+　　　</label>
+　　　<label>
+　　　    <%= f.radio_button :is_active, "false" %> 在庫なし
+　　　</label>
+      <%= f.submit '登録' %>
+  <% end %>
 </section>

@@ -1,4 +1,19 @@
-<section class="inner">
-	<h2 class="section-ttl">商品新規登録</h2>
-  <%= render 'form', item: @item, url: admin_items_path, submit: '登録' %>
-</section>
+<h2 class="section-ttl">商品新規登録</h2>
+  <%= form_with model: @item, url: admin_items_path do |f| %>
+  <p>部品画像</p>
+      <%= f.file_field :image, accept: "image/*" %>
+   <p>部品名</p>
+      <%= f.text_field :name %>
+   <p>部品説明</p>          
+      <%= f.text_area :introduction %>
+   <p>個数</p>
+      <%= f.text_field :amount %>
+      <p>在庫ステータス</p>
+      <label>
+　　　　<%= f.radio_button :is_active, "true" %> 在庫あり
+　　　</label>
+　　　<label>
+　　　    <%= f.radio_button :is_active, "false" %> 在庫なし
+　　　</label>
+      <%= f.submit '登録' %>
+  <% end %>

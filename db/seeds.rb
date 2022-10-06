@@ -5,7 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-admin = Admin.create!(:email => 'a@dmin.com', :encrypted_password => 'a@dmin.com')
+Admin.create(email: 'm.@jp', password: '111111')
 # User.create!(name: 'ゲスト', email: 'gest@sample.com')
 # モデル名.create!(カラム名: 値)
-admin.save!
+#モデルクラス名.create(:カラム名1 => 値1, :カラム名2 => 値2, ...)
+#admin.save!

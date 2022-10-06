@@ -1,15 +1,18 @@
-<section class="wrapper flex">
-	<div class="inner">
-		
-			<h2 class="section-ttl">商品一覧 (全<%= @all_items_count %>件)</h2>
+	<h2>商品一覧<%#= @all_items_count %></h2>
 		<h3 class="text-right">
 			<%= link_to "+", new_admin_item_path, class: "new_admin_item" %>
+			 <% @items.each do |item| %>
+			  <% if item.image.attached? %>
+			    <%= image_tag item.image, size: "200x200" %>
+			  <% else %>
+			    <%= image_tag 'no_image', size: "200x200" %>
+			  <% end %>
+			 <% end %>
+  
 		</h3>
-		<% if @items.first %> <!-- @item.existsと同義、SQL1個分削減(?) -->
-			<%= render 'admin/items/index', items: @items %>
-			<%= paginate @items %>
-		<% else %>
+		<%# if @items.first %> <!-- @item.existsと同義、SQL1個分削減(?) -->
+			<%#= render 'admin/items/index', items: @items %>
+			<%#= paginate @items %>
+		<%# else %>
 			<h3>対応する商品はありませんでした。</h3>
-		<% end %>
-	</div>
-</section>
+		<%# end %>
