@@ -2,13 +2,24 @@
 		<h3 class="text-right">
 			<%= link_to "+", new_admin_item_path, class: "new_admin_item" %>
 			 <% @items.each do |item| %>
+			  <%= link_to admin_item_path(item) do %>
+			   </p>
 			  <% if item.image.attached? %>
-			    <%= image_tag item.image, size: "200x200" %>
+			    <%= image_tag item.image, size: "100x100" %>
 			  <% else %>
-			    <%= image_tag 'no_image', size: "200x200" %>
+			    <%= image_tag 'no_image', size: "100x100" %>
 			  <% end %>
+			   <p><%= item.name %></p>
+			   <p><%= item.amount %></p>
+			  	<p>
+				<% if item.is_active? %>
+					<span class="text-active">販売中</span>
+				<% else %>
+					<span class="text-invalid">販売停止中</span>
+				<% end %>
 			 <% end %>
-  
+			<% end %>
+
 		</h3>
 		<%# if @items.first %> <!-- @item.existsと同義、SQL1個分削減(?) -->
 			<%#= render 'admin/items/index', items: @items %>

@@ -20,7 +20,8 @@ Rails.application.routes.draw do
     resources :customers, only: [:index, :show, :edit, :update]
     resources :items, except: [:destroy]
     resources :orders, only: [:index, :show, :update]
-     resources :production, only: [:update]
+    resources :production, only: [:update]
+    resources :department
 
   end
 
@@ -36,8 +37,6 @@ Rails.application.routes.draw do
     post 'orders/confirm' => 'orders#confirm'
     get 'orders/confirm' => 'orders#error'
     get 'orders/thanks' => 'orders#thanks', as: 'thanks'
-
-    resources :addresses, only: [:index, :create, :edit, :update, :destroy] #配送先のこと
     resources :items, only: [:index, :show] do #do~endがここでくくられているのか理由を聞く
       resources :cart_items, only: [:create, :update, :destroy] #なぜ37行目と39行目は分けてあるのか聞く
     end

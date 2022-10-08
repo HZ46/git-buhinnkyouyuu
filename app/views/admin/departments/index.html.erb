@@ -1,0 +1,5 @@
+<% @departments.each do |department| %>
+ <%= link_to admin_department_path(department) do %>
+  <%= department.id %>
+  <%= department.name %>
+<% end %>
