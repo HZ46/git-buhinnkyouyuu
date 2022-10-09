@@ -1,3 +1,5 @@
- <%= form_with model: @department, url: admin_department_index_path do |f| %>
+ <%= form_with model: @department, url: admin_departments_path do |f| %>
+  <%= f.text_field :department_number %>
   <%= f.text_field :name %>
 <%= f.submit '登録' ,class:"btn btn-success" %>
+<% end %>

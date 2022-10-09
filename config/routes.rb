@@ -4,10 +4,6 @@ Rails.application.routes.draw do
   sessions: "admin/sessions"
   }
 
-  devise_for :user, controllers: {
-  sessions: "user/sessions"
-  }
-
   devise_for :department, controllers: {
   sessions: "departments/sessions"
   }
@@ -21,12 +17,13 @@ Rails.application.routes.draw do
     resources :items, except: [:destroy]
     resources :orders, only: [:index, :show, :update]
     resources :production, only: [:update]
-    resources :department
+    resources :departments
 
   end
 
 
   scope module: :user do
+    
     root 'homes#top'
 
     get 'users/departmentpage' => 'users#department', as: 'departmentpage'

@@ -1,5 +1,8 @@
+<%= link_to "+",new_admin_department_path %>
 <% @departments.each do |department| %>
  <%= link_to admin_department_path(department) do %>
   <%= department.id %>
   <%= department.name %>
+  <%= department.department_number %>
+ <% end %>
 <% end %>
