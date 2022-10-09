@@ -41,7 +41,7 @@
             ログアウト
             <% end %>
             </li>
-          <% elsif user_signed_in? %>
+          <% elsif department_signed_in? %>
             <li><%= link_to departmentpage_path,class: "nav-link text-light" do %>
                <i class="fas fa-home fa-w-18"></i>
                部門ページ
@@ -63,7 +63,7 @@
             <% end %>
             </li>
           <% else %>
-            <li><%= link_to new_user_session_path,class: "nav-link text-light" do %>
+            <li><%= link_to new_department_session_path,class: "nav-link text-light" do %>
               <i class="fa-solid fa-right-to-bracket"></i>
               ログイン
               <% end %>

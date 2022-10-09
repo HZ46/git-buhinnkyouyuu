@@ -1,2 +1,0 @@
-module User::CompanyHelper
-end
