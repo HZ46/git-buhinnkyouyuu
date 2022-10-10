@@ -1,12 +1,15 @@
 Rails.application.routes.draw do
-  #devise_for :users
-  devise_for :admin, controllers: {
-  sessions: "admin/sessions"
-  }
+  root 'homes#top'
 
   devise_for :department, controllers: {
-  sessions: "departments/sessions"
+    sessions: "department/sessions"
   }
+
+  devise_for :admin, controllers: {
+    sessions: "admin/sessions"
+  }
+
+
   get 'search' => 'posts#search'
 
   namespace :admin do
@@ -18,14 +21,9 @@ Rails.application.routes.draw do
     resources :orders, only: [:index, :show, :update]
     resources :production, only: [:update]
     resources :departments
-
   end
 
-
   scope module: :user do
-    
-    root 'homes#top'
-
     get 'users/departmentpage' => 'users#department', as: 'departmentpage'
     # customers/editのようにするとdeviseのルーティングとかぶってしまうためinformationを付け加えている。
     #get 'users/information/edit' => 'users#edit', as: 'edit_information'
@@ -39,7 +37,6 @@ Rails.application.routes.draw do
     end
     resources :cart_items, only: [:index]
     resources :orders, only: [:index, :create, :show]
-
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

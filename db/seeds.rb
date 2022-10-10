@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 if Rails.env.development?
-  Admin.create!(email: 'm.@jp', password: '111111')
+  Admin.create!(email: 'mk.@jp', password: '111111')
   (1..10).each do |n|
     Department.create!(department_number: n, password: '111111')
   end

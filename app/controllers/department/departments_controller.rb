@@ -1,4 +1,4 @@
-class User::DepartmentsController < ApplicationController
+class Department::DepartmentsController < ApplicationController
    before_action :authenticate_customer!
   before_action :set_current_customer
 
@@ -19,6 +19,11 @@ class User::DepartmentsController < ApplicationController
   def unsubscribe
   end
 
+  def withdraw
+    @customer.update(is_active: false)
+    reset_session
+    redirect_to root_path
+  end
 
   private
 

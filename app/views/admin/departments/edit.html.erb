@@ -1,3 +1,5 @@
 <%= form_with model: @department, url: admin_department_path(@department) do |f| %>
  <%= f.text_field :name %>
+ <%= f.password_field :password %>
  <%= f.submit '変更',class: "btn btn-success" %>
+<% end %>

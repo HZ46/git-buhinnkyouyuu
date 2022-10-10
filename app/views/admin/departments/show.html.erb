@@ -1,6 +1,6 @@
-<%= @department.name %>
-		<div class="flex align-center pl5">
-		  
-			<%= link_to "編集する", edit_admin_department_path(@department), class: "btn btn-success" %>
-		</div>
+<div class="flex align-center pl5">
+ <%= @department.name %>
+ <%= @department.password %>
+ <%= link_to "編集する", edit_admin_department_path(@department), class: "btn btn-success" %>
+</div>
 			
