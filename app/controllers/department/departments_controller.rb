@@ -1,15 +1,16 @@
 class Department::DepartmentsController < ApplicationController
-   before_action :authenticate_customer!
-  before_action :set_current_customer
+   before_action :authenticate_department!
+  before_action :set_current_department
 
   def show
+    #@department = Department.find(params[:id])
   end
 
   def edit
   end
 
   def update
-    if @customer.update(customer_params)
+    if @department.update(customer_params)
       redirect_to mypage_path, notice: '会員情報の更新が完了しました。'
     else
       render :edit
@@ -20,18 +21,18 @@ class Department::DepartmentsController < ApplicationController
   end
 
   def withdraw
-    @customer.update(is_active: false)
+    @department.update(is_active: false)
     reset_session
     redirect_to root_path
   end
 
   private
 
-  def set_current_customer
-    @customer = current_customer
+  def set_current_department
+    @department = current_department
   end
 
-  def customer_params
-    params.require(:customer).permit(:last_name, :first_name, :first_name_kana, :last_name_kana, :email, :postal_code, :address, :telephone_number)
-  end
+  #def customer_params
+    #params.require(:customer).permit(:last_name, :first_name, :first_name_kana, :last_name_kana, :email, :postal_code, :address, :telephone_number)
+  #end
 end

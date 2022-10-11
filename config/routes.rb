@@ -23,8 +23,8 @@ Rails.application.routes.draw do
     resources :departments
   end
 
-  scope module: :user do
-    get 'users/departmentpage' => 'users#department', as: 'departmentpage'
+  scope module: :department do
+    get 'department/mypage' => 'departments#show', as: 'departmentpage'
     # customers/editのようにするとdeviseのルーティングとかぶってしまうためinformationを付け加えている。
     #get 'users/information/edit' => 'users#edit', as: 'edit_information'
     #patch 'customers/information' => 'customers#update', as: 'update_information'

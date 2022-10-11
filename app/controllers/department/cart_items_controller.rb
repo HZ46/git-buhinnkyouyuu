@@ -1,9 +1,9 @@
 class Department::CartItemsController < ApplicationController
- before_action :authenticate_customer!
+ before_action :authenticate_department!
   before_action :set_cart_item, only: [:create, :update, :destroy]
 
   def index
-    @cart_items = current_user.cart_items.includes(:item)
+    @cart_items = current_department.cart_items
   end
 
   def create
@@ -17,7 +17,7 @@ class Department::CartItemsController < ApplicationController
       if @cart_item.save
         redirect_to cart_items_path
       else
-        render 'public/items/show'
+        render 'departments/items/show'
       end
     end
   end
@@ -45,6 +45,6 @@ class Department::CartItemsController < ApplicationController
 
   def set_cart_item
     @item = Item.find(params[:item_id])
-    @cart_item = current_customer.has_in_cart(@item)
+    @cart_item = current_department.has_in_cart(@item)
   end
 end
