@@ -3,7 +3,7 @@ class Department::DepartmentsController < ApplicationController
   before_action :set_current_department
 
   def show
-    #@department = Department.find(params[:id])
+    @bookmarks = Bookmark.where(department_id: current_department.id)
   end
 
   def edit

@@ -6,6 +6,7 @@ class Department < ApplicationRecord
   
   has_many :cart_items
   has_many :orders
+  has_many :bookmarks
   
   def has_in_cart(item)
     cart_items.find_by(item_id: item.id)

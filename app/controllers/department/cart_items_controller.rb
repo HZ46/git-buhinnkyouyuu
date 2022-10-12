@@ -1,14 +1,17 @@
 class Department::CartItemsController < ApplicationController
  before_action :authenticate_department!
-  before_action :set_cart_item, only: [:create, :update, :destroy]
+  #before_action :set_cart_item, only: [:create, :update, :destroy]
 
   def index
     @cart_items = current_department.cart_items
   end
 
   def create
-    if @cart_item
-      new_amount = @cart_item.amount + cart_item_params[:amount]
+    @item = Item.find(params[:cart_item][:item_id])
+    @cart_items = current_department.cart_items
+    if current_department.cart_items.where(item_id: @item.id).present?
+      @cart_item = current_department.cart_items.find_by(item_id: @item.id)
+      new_amount = @cart_item.amount + cart_item_params[:amount].to_i
       @cart_item.update(amount: new_amount)
       redirect_to cart_items_path
     else
@@ -29,7 +32,7 @@ class Department::CartItemsController < ApplicationController
 
   def destroy
     @cart_item.destroy if @cart_item
-    redirect_to cart_items_path 
+    redirect_to cart_items_path
   end
 
   #def destroy_all
@@ -43,8 +46,8 @@ class Department::CartItemsController < ApplicationController
     params.require(:cart_item).permit(:amount)
   end
 
-  def set_cart_item
-    @item = Item.find(params[:item_id])
-    @cart_item = current_department.has_in_cart(@item)
-  end
+  #def set_cart_item
+  #  @item = Item.find(params[:item_id])
+  # @cart_item = current_department.has_in_cart(@item)
+  #end
 end

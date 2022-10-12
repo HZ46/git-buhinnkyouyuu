@@ -1,8 +1,8 @@
 <div class="content">
 		<h2 class="section-ttl"><%= @item.name %></h2>
-		<%= render 'layouts/error_messages', resource: @cart_item %>
+		<%#= render 'layouts/error_messages', resource: @cart_item %>
 		<div class="flex">
-			<%= image_tag @item.get_image, class: "item_image" %>
+			<%= image_tag @item.image, class: "item_image" %>
 			<div class="item_info">
 				<h4><%= @item.introduction %></h4>
 				<p>
@@ -12,22 +12,36 @@
 					<span class="text-invalid">在庫なし</span>
 					<% end %>
 				</p><br>
-					<% cart_item = current_customer.has_in_cart(@item) %>
+					<% cart_item = current_department.has_in_cart(@item) %>
 					<% if cart_item %>
-						<%= form_with model: [@item, cart_item] do |f| %>
-							<p>こちらの商品は、既にカートに入っています。</p>
-							<%= f.select :amount, [*(1..10)] %>
+					<%= form_with model: @cart_item, url: cart_items_path do |f| %>
+							<p>数量を選択して下さい。</p>
+							<%= f.select :amount, [*(1..10)], {selected: 1} %>
+							<%= f.hidden_field :item_id, :value => @item.id %>
 							<%= f.submit "数量変更", class: "btn btn-primary" %>
 						<% end %>
 					<% elsif @item.is_active? %>
-						<%= form_with model: [@item, @cart_item] do |f| %>
+						<%= form_with model: @cart_item, url: cart_items_path do |f| %>
 							<p>数量を選択して下さい。</p>
 							<%= f.select :amount, [*(1..10)], {selected: 1} %>
+							<%= f.hidden_field :item_id, :value => @item.id %>
 							<%= f.submit "カートに入れる", class: "btn btn-primary" %>
 						<% end %>
 					<% else %>
 						<p class="bold">こちらの商品は、現在在庫がありません。</p>
 					<% end %>
+
+					<tbody>
+  <tr>
+    <td><%= @item.name %></td>
+    <td><%#= link_to "編集", edit_item_path(@item) %></td>
+    <% if @item.bookmarked_by?(current_department) %>
+      <td><%= link_to "ブックマークを外す", item_bookmarks_path(@item), method: :delete %></td>
+    <% else %>
+      <td><%= link_to "ブックマーク", item_bookmarks_path(@item), method: :post %></td>
+    <% end %>
+  </tr>
+</tbody>
 			</div>
 		</div>
 	</div>

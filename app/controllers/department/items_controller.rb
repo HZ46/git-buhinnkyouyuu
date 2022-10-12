@@ -11,7 +11,7 @@ class Department::ItemsController < ApplicationController
    end
 
   def show
-    @item = Item.where_genre_active.find(params[:id])
+    @item = Item.find(params[:id])
     @cart_item = CartItem.new
   end
 end

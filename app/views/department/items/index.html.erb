@@ -18,8 +18,9 @@
 			<div class="items">
 				<% @items.each do |item| %>
 					<%= link_to item_path(item) do %>
-						<%= image_tag item.get_image, format: "jpeg", fallback: "no-image.png" %>
+						<%= image_tag item.image, format: "jpeg", fallback: "no-image.png" %>
 						<p><%= item.name %></p>
+						<p><%= item.amount %></p>
 						<p>
 							<% if item.is_active? %>
 								<span class="text-active">販売中</span>
@@ -30,7 +31,7 @@
 					<% end %>
 				<% end %>
 			</div>
-			<%= paginate @items %>
+			<%#= paginate @items %>
 		<% else %>
 			<h3>対応する商品はありませんでした。</h3>
 		<% end %>

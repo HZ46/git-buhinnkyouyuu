@@ -1,13 +1,14 @@
 class Department::OrdersController < ApplicationController
    before_action :authenticate_department!
-  before_action :ensure_cart_items, only: [:new, :confirm, :create, :error]
+  #before_action :ensure_cart_items, only: [:new, :confirm, :create, :error]
 
   def new
     @order = Order.new
   end
 
   def confirm
-    @order = Order.new(order_params)
+    #@order = Order.find(params[:id])
+    @cart_items = current_department.cart_items
     #if params[:select_address] == '0'
      # @order.get_shipping_informations_from(current_customer)
     #elsif params[:select_address] == '1'
@@ -17,7 +18,7 @@ class Department::OrdersController < ApplicationController
       # 処理なし
     #else
       #flash[:error] = '情報を正しく入力して下さい。'
-      r#ender :new
+      #render :new
     #end
   end
 
@@ -43,17 +44,16 @@ class Department::OrdersController < ApplicationController
 
   def show
     @order = current_department.orders.find(params[:id])
-    @order_details = @order.order_details.includes(:item)
   end
 
   private
 
   def order_params
-    params.require(:order).permit(:ensure_cart, :delivery_department, :name)
+    params.require(:order).permit(:delivery_department)
   end
 
-  def ensure_cart_items
-    @cart_items = current_department.cart_items.includes(:item)
-    redirect_to items_path unless @cart_items.first
-  end
+  #def ensure_cart_items
+   # @cart_items = current_department.cart_items.includes(:item)
+   # redirect_to items_path unless @cart_items.first
+  #end
 end

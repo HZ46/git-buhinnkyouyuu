@@ -21,6 +21,18 @@
 			</tr>
 		</tbody>
 	</table>
+	<table>
+  ブックマーク一覧
+  <tr>
+    <th>部品名</th>
+  </tr>
+    <% @bookmarks.each do |bookmark| %>
+  <tr>
+    <td><%= bookmark.item.name %></td>
+  </tr>
+    <% end %>
+  </tbody>
+</table>
 	<div class="flex">
 		<%#= link_to "配送先編集", addresses_path, class: "btn btn-primary" %>
 		<%= link_to "注文履歴一覧", orders_path, class: "btn btn-primary ml2" %>
