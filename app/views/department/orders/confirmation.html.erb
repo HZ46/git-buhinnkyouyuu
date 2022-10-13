@@ -21,15 +21,14 @@
 				<% end %>
 			</tbody>
 		</table>
-	<%#= form_with model: @order, url: orders_path do |f| %>
+	<%= form_with model: @order, url: orders_path do |f| %>
 		<div class="field">
 			<label>お届け先</label>
-			<p><%#= @order.delivery_department %> </p>
-			<%#= f.hidden_field :delivery_department, value: @order.postal_code %>
-			
+			<%# MODELのバリデーションのinclusionの編集も忘れずに %>
+			<%= f.select :delivery_department, ['1階南棟', '1階北棟', '2階南棟', '2階北棟'], {include_blank: 'お届け先を選択してください'}, class: 'form-control' %>
 		</div>
 		<div class="actions text-center">
 			<%= f.submit "注文を確定する", class: "btn btn-primary submit_to_create_order" %>
 		</div>
-	<%# end %>
+	<% end %>
 </section>

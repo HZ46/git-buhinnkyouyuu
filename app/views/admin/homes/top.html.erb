@@ -1,0 +1,11 @@
+<section class="inner">
+  <h2 class="section-ttl">管理者トップ</h2>
+  <h1 class="admin_top-txt">
+  	注文履歴一覧
+  	<% @orders.each do |order| %>
+  	 <%= link_to order.created_at, admin_order_path(order) %>
+  	 <%= order.department.name %>
+
+  	<% end %>
+  </h1>
+</section>

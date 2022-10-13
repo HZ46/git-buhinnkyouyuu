@@ -15,7 +15,7 @@ class Admin::OrdersController < ApplicationController
 
   def show
     @order_details = @order.order_details.includes(:item)
-    @customer = @order.department
+    @department = @order.department
   end
 
   def update

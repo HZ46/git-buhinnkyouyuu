@@ -6,9 +6,10 @@ class Department::OrdersController < ApplicationController
     @order = Order.new
   end
 
-  def confirm
-    #@order = Order.find(params[:id])
+  def confirmation
+    # @order = Order.new(orders_params)
     @cart_items = current_department.cart_items
+    @order = Order.new
     #if params[:select_address] == '0'
      # @order.get_shipping_informations_from(current_customer)
     #elsif params[:select_address] == '1'
@@ -28,10 +29,24 @@ class Department::OrdersController < ApplicationController
   def create
     @order = current_department.orders.new(order_params)
     if @order.save
-      @order.create_order_details(current_department)
+      # @order.create_order_details(current_department)
+
+      current_department.cart_items.each do |item|
+        OrderDetail.create!([
+            order_id: @order.id,
+            item_id: item.item_id,
+            amount: item.amount
+          ])
+      end
+
+      current_department.cart_items.destroy_all
+
+
+
       redirect_to thanks_path
     else
-      render :new
+      @cart_items = current_department.cart_items
+      render :confirmation
     end
   end
 
@@ -39,7 +54,7 @@ class Department::OrdersController < ApplicationController
   end
 
   def index
-    @orders = current_department.orders.includes(:order_details, :items).page(params[:page]).reverse_order
+    @orders = current_department.orders
   end
 
   def show
@@ -51,6 +66,10 @@ class Department::OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:delivery_department)
   end
+
+  # def orders_params
+  #   params.require(:order).permit(:delivery_department)
+  # end
 
   #def ensure_cart_items
    # @cart_items = current_department.cart_items.includes(:item)
