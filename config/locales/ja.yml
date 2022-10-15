@@ -9,8 +9,10 @@
       order_detail:
         making_status:
           cannot_start: '着手不可'
-          
+
           picking: 'ピッキング中'
           completed: '製作完了'
-
-        
+    will_paginate:
+      previous_label: '前'
+      next_label: '次'
+      page_gap: …

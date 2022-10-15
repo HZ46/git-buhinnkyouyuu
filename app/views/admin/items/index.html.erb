@@ -1,17 +1,11 @@
 <h2>商品一覧<%#= @all_items_count %></h2>
-		<h3 class="text-right">
 			<div class="search-form">
   <%= form_with url: search_path, method: :get, local: true do |f| %>
     <%= f.text_field :keyword, value: @keyword %>
     <%= f.submit "検索" %>
   <% end %>
 </div>
-<div class="item-list">
-  <% @items.each do |item| %>
-    <%= item.name %>
-  <% end %>
-</div>
-			<%= link_to "+", new_admin_item_path, class: "new_admin_item" %>
+			<h3 class="text-right"><%= link_to "+", new_admin_item_path, class: "new_admin_item" %></h3>
 			 <% @items.each do |item| %>
 			  <%= link_to admin_item_path(item) do %>
 			   </p>
@@ -24,17 +18,17 @@
 			   <p><%= item.amount %></p>
 			  	<p>
 				<% if item.is_active? %>
-					<span class="text-active">販売中</span>
+					<span class="text-active">在庫あり</span>
 				<% else %>
-					<span class="text-invalid">販売停止中</span>
+					<span class="text-invalid">在庫なし</span>
 				<% end %>
 			 <% end %>
 			<% end %>
 
-		</h3>
-		<%# if @items.first %> <!-- @item.existsと同義、SQL1個分削減(?) -->
-			<%#= render 'admin/items/index', items: @items %>
+			<%= will_paginate @items, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
+
+				<% if @items.first %> <!-- @item.existsと同義、SQL1個分削減(?) -->
 			<%#= paginate @items %>
-		<%# else %>
+		<% else %>
 			<h3>対応する商品はありませんでした。</h3>
-		<%# end %>
+		<% end %>

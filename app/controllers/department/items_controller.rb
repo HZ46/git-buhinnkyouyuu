@@ -1,7 +1,6 @@
 class Department::ItemsController < ApplicationController
    def index
-
-     @items = Item.all
+     @items = Item.all.paginate(page: params[:page])
    end
 
    def search
@@ -14,4 +13,5 @@ class Department::ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @cart_item = CartItem.new
   end
+
 end

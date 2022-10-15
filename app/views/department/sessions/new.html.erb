@@ -1,13 +1,14 @@
-<h2>Log in</h2>
+<div class="text-center">
+<h2>ログイン</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
-    <%= f.label :department_number %><br />
+    <%= f.label :department_number,"部門番号" %><br />
     <%= f.text_field :department_number, autofocus: true %>
   </div>
 
   <div class="field">
-    <%= f.label :password %><br />
+    <%= f.label :password,"パスワード" %><br />
     <%= f.password_field :password, autocomplete: "current-password" %>
   </div>
 
@@ -19,8 +20,7 @@
   <% end %>
 
   <div class="actions">
-    <%= f.submit "Log in" %>
+    <%= f.submit "ログインする" %>
   </div>
 <% end %>
-
-<%= render "department/shared/links" %>
+</div>

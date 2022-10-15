@@ -1,40 +1,34 @@
-<section class="inner">
+<div class="text-center">
   <% if flash[:notice] %>
     <p class="text-active"><%= flash[:notice] %></p>
   <% end %>
-	<h2 class="section-ttl">部門ページ</h2>
-	<h3>
-		登録情報
-		<%#= link_to "編集する", edit_information_path, class: "btn btn-success ml2" %>
-		<%#= link_to "パスワードを変更する", edit_customer_registration_path, class: "btn btn-success ml2" %>
-	</h3>
-	<table class="customer_info mb3">
-		<thead>
-			<th></th>
-			<th></th>
-			<th></th>
-		</thead>
-		<tbody>
-			<tr>
-				<td>部門名</td>
-				<td><%= @department.name %></td>
-			</tr>
-		</tbody>
+	<h2>部門ページ</h2>
+		<table>
+			<thead>
+				<th></th>
+				<th></th>
+			</thead>
+			<tbody>
+				<tr>
+					<td>部門名</td>
+					<td><%= @department.name %></td>
+				</tr>
+			</tbody>
+		</table>
+		<table>
+	  ブックマーク一覧
+	  <tr>
+	    <th>部品名</th>
+	  </tr>
+	    <% @bookmarks.each do |bookmark| %>
+	  <tr>
+	    <td><%= bookmark.item.name %></td>
+	  </tr>
+	    <% end %>
+	  </tbody>
 	</table>
-	<table>
-  ブックマーク一覧
-  <tr>
-    <th>部品名</th>
-  </tr>
-    <% @bookmarks.each do |bookmark| %>
-  <tr>
-    <td><%= bookmark.item.name %></td>
-  </tr>
-    <% end %>
-  </tbody>
-</table>
 	<div class="flex">
 		<%#= link_to "配送先編集", addresses_path, class: "btn btn-primary" %>
 		<%= link_to "注文履歴一覧", orders_path, class: "btn btn-primary ml2" %>
 	</div>
-</section>
+</div>

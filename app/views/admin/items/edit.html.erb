@@ -1,4 +1,5 @@
 <section class="inner">
+  <div class="text-center">
 	<h2 class="section-ttl"><%= @item.name %>の編集</h2>
   <%= form_with model: @item, url: admin_item_path(@item) do |f| %>
      <p>部品画像</p>
@@ -15,7 +16,8 @@
 　　　</label>
 　　　<label>
 　　　    <%= f.radio_button :is_active, "false" %> 在庫なし
-　　　</label>
-      <%= f.submit '登録' %>
+　　　</label></br>
+      <%= f.submit '登録',class: "btn btn-success" %>
   <% end %>
+  </div>
 </section>

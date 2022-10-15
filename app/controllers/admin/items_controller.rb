@@ -7,8 +7,7 @@ class Admin::ItemsController < ApplicationController
   end
 
   def index
-    @items = Item.all
-    #@all_items_count = all_items.count
+    @items = Item.all.paginate(page: params[:page])
   end
 
   def create
@@ -26,12 +25,13 @@ class Admin::ItemsController < ApplicationController
   def update
     @item.update(item_params) ? (redirect_to admin_item_path(@item)) : (render :edit)
   end
-  
+
   def search
     @items = Item.search(params[:keyword])
     @keyword = params[:keyword]
     render "index"
   end
+
 
   private
 
