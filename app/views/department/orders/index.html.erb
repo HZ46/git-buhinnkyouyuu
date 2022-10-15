@@ -18,8 +18,8 @@
 						<%= order.delivery_department %><br>
 					</td>
 					<td>
-						<% order.items.each do |item| %>
-							<p><%= item.name %></p>
+						<% order.order_details.each do |order_detail| %>
+							<p><%= order_detail.item.name %></p>
 						<% end %>
 					</td>
 					<td class="text-center"><%= order.status_i18n %></td>

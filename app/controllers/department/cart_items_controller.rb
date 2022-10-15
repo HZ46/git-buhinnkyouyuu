@@ -1,6 +1,6 @@
 class Department::CartItemsController < ApplicationController
  before_action :authenticate_department!
-  #before_action :set_cart_item, only: [:create, :update, :destroy]
+ before_action :set_cart_item, only: [:update, :destroy]
 
   def index
     @cart_items = current_department.cart_items
@@ -46,8 +46,7 @@ class Department::CartItemsController < ApplicationController
     params.require(:cart_item).permit(:amount)
   end
 
-  #def set_cart_item
-  #  @item = Item.find(params[:item_id])
-  # @cart_item = current_department.has_in_cart(@item)
-  #end
+  def set_cart_item
+   @cart_item = CartItem.find(params[:id])
+  end
 end

@@ -20,15 +20,16 @@ class Admin::OrdersController < ApplicationController
 
   def update
     if @order.update(order_params) && @order.confirm_deposit?
-      @order.order_details.update_all(making_status: 1)
+      @order.order_details.update_all(making_status: 0)
     end
     redirect_to admin_order_path(@order)
   end
 
+
   private
 
   def order_params
-    params.require(:order).permit(:status)
+    params.require(:order_detail).permit(:status)
   end
 
   def ensure_order

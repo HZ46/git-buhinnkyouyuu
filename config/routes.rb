@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   }
 
 
-  # get 'search' => 'search#search' 
+  # get 'search' => 'search#search'
 
   namespace :admin do
     get 'top' => 'homes#top', as: 'top'
@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     resources :orders, only: [:index, :show, :update]
     resources :production, only: [:update]
     resources :departments
+    resources :order_details, only: [:update]
   end
 
   scope module: :department do
