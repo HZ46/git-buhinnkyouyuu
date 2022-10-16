@@ -4,19 +4,19 @@ class Admin::DepartmentsController < ApplicationController
   end
 
   def new
-    #@department = department.new
+   @department = Department.new
   end
 
   def create
     @department = Department.new(department_params)
-    @department.save
-    redirect_to admin_department_index_path
-    #else
+    if @department.save
+    redirect_to admin_department_path(@department.id)
+    else
      #@books=Book.all
      #@user=current_user
 
-    #render :index
-    #end
+    render :index
+    end
   end
 
   def index
@@ -39,7 +39,7 @@ class Admin::DepartmentsController < ApplicationController
      redirect_to admin_department_path(@department)
     else 
      render :edit
-   end
+    end
   end
 
   def destroy
@@ -51,7 +51,7 @@ class Admin::DepartmentsController < ApplicationController
   private
 
   def department_params
-    params.require(:department).permit(:name, :password)
+    params.require(:department).permit(:name, :department_number, :password)
   end
 
   def depart_params

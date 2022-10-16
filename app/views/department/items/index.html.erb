@@ -1,20 +1,21 @@
 <section class="wrapper flex">
 	<div class="content">
 		<h2 class="section-ttl">商品一覧</h2>
+		<center>
+			<div class="search-form">
+		        <%= form_with url: search_path, method: :get, local: true do |f| %>
+			    <%= f.text_field :keyword, value: @keyword, :size=>"60" %>
+			    <%= f.submit "検索",class: "btn btn-primary" %>
+		        <% end %>
+		    </div>
+		   </center>
 
-	<div class="search-form">
-  <%= form_with url: search_path, method: :get, local: true do |f| %>
-    <%= f.text_field :keyword, value: @keyword %>
-    <%= f.submit "検索" %>
-  <% end %>
-</div>
-
-
+<left>
 		<% if @items.first %> <!-- @item.existsと同義、SQL1個分削減(?) -->
 			<div class="items">
 				<% @items.each do |item| %>
 					<%= link_to item_path(item) do %>
-						<%= image_tag item.image, format: "jpeg", fallback: "no-image.png" %>
+						<%= image_tag item.image, format: "jpeg", fallback: "no-image.png", size: "300x300" %>
 						<p>部品名</p>
 						<p><%= item.name %></p>
 						<p>在庫状況</p>
@@ -27,6 +28,7 @@
 						</p>
 					<% end %>
 				<% end %>
+				</left>
 			<%= will_paginate @items, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
 		 </div>
 		<% else %>

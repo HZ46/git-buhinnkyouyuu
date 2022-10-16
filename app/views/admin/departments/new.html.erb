@@ -1,17 +1,12 @@
 <h2 class="section-ttl">部門新規登録</h2>
-  <%= form_with model: @item, url: admin_items_path do |f| %>
+  <%= form_with model: @department, url: admin_departments_path do |f| %>
    <p>部門名</p>
       <%= f.text_field :name %>
    <p>部門番号</p>          
       <%= f.text_field :department_number %>
    <p>パスワード</p>
       <%= f.password_field :password %>
-      <p>パスワード確認</p>
-      <label>
-　　　　<%= f.radio_button :is_active, "true" %> 在庫あり
-　　　</label>
-　　　<label>
-　　　    <%= f.radio_button :is_active, "false" %> 在庫なし
-　　　</label>
-      <%= f.submit '登録' %>
+   <p>パスワード確認</p>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      <%= f.submit '登録',class:"btn btn-success" %>
   <% end %>
