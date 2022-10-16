@@ -6,13 +6,13 @@ class Admin::OrderDetailsController < ApplicationController
     @order_details = @order.order_details
     @order_detail.update(order_detail_params)
 
-    if @order_details.where(making_status: "ピッキング中").count >= 1
-      @order.status = "承り中"
+    if @order_details.where(making_status: "pikking").count 
+      @order.status = :accepting
       @order.save
     end
 
-     if @order.order_details.count == @order_details.where(making_status: "製作完了").count >= 2
-       @order.status = "お届け準備中"
+     if @order.order_details.count == @order_details.where(making_status: "completed").count
+       @order.status = :preparing_for_delivery
        @order.save
      end
     redirect_to admin_order_path(@order_detail.order.id)
@@ -25,4 +25,3 @@ class Admin::OrderDetailsController < ApplicationController
   end
 end
 
- 

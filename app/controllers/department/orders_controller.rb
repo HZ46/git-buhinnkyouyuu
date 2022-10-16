@@ -37,6 +37,20 @@ class Department::OrdersController < ApplicationController
             item_id: item.item_id,
             amount: item.amount
           ])
+
+       if target_item = Item.find(item.item_id)
+        target_item.amount = target_item.amount - item.amount
+        if target_item.amount == 0
+           target_item.is_active = false
+        end
+        target_item.save!
+       end
+
+       #if target_item = Item.find(item.item_id)
+        # target_item.amount = target_item.amount < item.amount
+
+       #end
+
       end
 
       current_department.cart_items.destroy_all
