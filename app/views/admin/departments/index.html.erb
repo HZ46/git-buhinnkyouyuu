@@ -1,7 +1,18 @@
-<% @departments.each do |department| %>
+ <h1>部門一覧</h1>
+ <h3 class="text-right"><%= link_to "+", new_admin_department_path %></h3>
+ <center>
+ <% @departments.each do |department| %>
  <%= link_to admin_department_path(department) do %>
-  <%= department.id %>
-  <%= department.name %>
-  <%= department.password %>
- <% end %>
+ <table border="1" width="200" height="200">
+   <tr>
+       <th><center>ID</center></th>
+       <th><center>部門名</center></th>
+   </tr>
+   <tr>
+       <td><center><%= department.id %></center></td>
+       <td><center><%= department.name %></center></td>
+   </tr>
+</table>
 <% end %>
+<% end %>
+</center>

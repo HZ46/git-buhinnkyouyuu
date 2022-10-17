@@ -1,6 +1,24 @@
-<div class="flex align-center pl5">
- <%= link_to "+", new_admin_department_path %>
- <%= @department.name %>
+<center>
+ <table border="1">
+  <tr>
+   <th>
+    部門名
+   </th>
+   <td>
+    <%= @department.name %>
+   </td>
+ </tr>
+ <tr>
+  <th>
+   部門番号
+  </th>
+  <td>
+   <center>
  <%= @department.department_number %>
+ </center>
+ </td>
+ </tr>
+ </table>
  <%= link_to "編集する", edit_admin_department_path(@department), class: "btn btn-success" %>
-</div>
+</center>
+

@@ -1,7 +1,8 @@
-<%= form_with model: @department, url: admin_department_path(@department) do |f| %>
+<center><%= form_with model: @department, url: admin_department_path(@department) do |f| %>
 <p>部門名</p></br>
  <%= f.text_field :name %></br>
  <p>部門番号</p></br>
  <%= f.text_field :department_number %></br>
  <%= f.submit '変更',class: "btn btn-success" %>
 <% end %>
+</center>

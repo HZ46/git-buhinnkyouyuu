@@ -4,7 +4,7 @@
 		<center>
 			<div class="search-form">
 		        <%= form_with url: search_path, method: :get, local: true do |f| %>
-			    <%= f.text_field :keyword, value: @keyword %>
+			    <%= f.text_field :keyword, value: @keyword, :size=>"30" %>
 			    <%= f.submit "検索",class: "btn btn-primary" %>
 		        <% end %>
 		    </div>
@@ -15,7 +15,7 @@
 			<div class="items">
 				<% @items.each do |item| %>
 					<%= link_to item_path(item) do %>
-						<%= image_tag item.image, format: "jpeg", fallback: "no-image.png", size: "300x300" %>
+						<%= image_tag item.image, format: "jpeg", fallback: "no-image.png", size: "200x200" %>
 						<p>部品名</p>
 						<p><%= item.name %></p>
 						<p>在庫状況</p>
