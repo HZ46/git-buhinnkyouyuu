@@ -11,4 +11,8 @@ class Department < ApplicationRecord
   def has_in_cart(item)
     cart_items.find_by(item_id: item.id)
   end
+  
+ def self.search(keyword)
+  where(["name like?", "%#{keyword}%"])
+ end
 end

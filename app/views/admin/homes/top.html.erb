@@ -1,11 +1,20 @@
-<section class="inner">
-  <h2 class="section-ttl">管理者トップ</h2>
   <h1 class="admin_top-txt">
   	注文履歴一覧
-  	<% @orders.each do |order| %>
-  	 <%= link_to order.created_at.strftime("%Y年%m月%d日"), admin_order_path(order) %>
-  	 <%= order.department.name %>
-
+  	<center>
+      <table border="1">
+        <tr>
+          <th><center>注文日時</center></th>
+          <td><center>部門名</center></td>
+          <td><center>作業状況</center></td>
+        </tr>
+        <tr>
+          <% @orders.each do |order| %>
+          <th><%= link_to order.created_at.strftime("%Y年%m月%d日"), admin_order_path(order) %></th>
+          <td><center><%= order.department.name %></center></td>
+          <td><center><%= order.status_i18n %></center></td>
+        </tr>
   	<% end %>
+  	  </table>
+  	  </center>
   </h1>
 </section>

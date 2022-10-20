@@ -1,11 +1,11 @@
 <section class="inner">
 	<h2 class="section-ttl">ショッピングカート</h2>
 	<% if @cart_items.first %>
-
-		<table class="cart_items has_border mb3">
+<center>
+		<table border="1">
 			<thead>
 				<tr>
-					<th colspan="2">商品</th>
+					<th>商品</th>
 					<th>数量</th>
 					<th></th>
 				</tr>
@@ -15,22 +15,22 @@
 					<% item = cart_item.item %>
 					<tr>
 						<td>
-							<%= image_tag item.image, class: "cart_item_image" %>
-						    <%= link_to item.name, item_path(item) %>
+							<%= image_tag item.image, size: "200x200" %><br>
+						    <center><%= link_to item.name, item_path(item) %></center>
 						</td>
-						<td>
 							<%= form_with model: cart_item do |f| %>
+							<td>
 								<%= f.select :amount, [*(1..10)], {include_blank: false}, id: "cart_item_amount_#{cart_item.id}" %>
+							</td>
+							<td class="text-center">
 								<%= f.submit "変更", class: "btn btn-primary", id: "submit_for_cart_item_#{cart_item.id}" %>
-							<% end %>
-						</td>
-						<td class="text-center">
+							<% end %><br><br>
 							<%= link_to "削除", cart_item_path(cart_item.id), method: :delete, "data-confirm" => "#{item.name}をカートから削除します。よろしいでしょうか？", class: "btn btn-danger", id: "destroy_cart_item_#{cart_item.id}" %>
 						</td>
 					</tr>
 				<% end %>
 			</tbody>
-		</table>
+		</table><br><br>
 		<div class="text-center">
 			<%= link_to "買い物を続ける", root_path, class: "btn btn-primary" %>
 			<%= link_to "注文情報入力に進む",orders_confirmation_path, class: "btn btn-success" %>
@@ -40,5 +40,6 @@
 		<div class="text-center">
 			<%= link_to "商品一覧を見る", items_path, class: "btn btn-primary" %>
 		</div>
+		</center>
 	<% end %>
 </section>

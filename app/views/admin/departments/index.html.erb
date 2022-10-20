@@ -1,18 +1,32 @@
  <h1>部門一覧</h1>
- <h3 class="text-right"><%= link_to "+", new_admin_department_path %></h3>
  <center>
- <% @departments.each do |department| %>
- <%= link_to admin_department_path(department) do %>
- <table border="1" width="200" height="200">
+			<div class="search-form">
+  <%= form_with url: search_path, method: :get, local: true do |f| %>
+    <%= f.text_field :keyword, value: @keyword, :size=>"30" %>
+    <%= f.submit "検索",class:"btn btn-primary" %>
+  <% end %>
+      </div>
+  </center>
+  <left>
+			<div class="departments">
+				<% @departments.each do |department| %>
+				<%= link_to admin_department_path(department) do %>
+				<% end %>
+   <% end %>
+   </div>
+ <center>
+ <table border="1">
    <tr>
-       <th><center>ID</center></th>
-       <th><center>部門名</center></th>
+       <th width="100" height="50"><center>ID</center></th>
+       <th width="200" height="50"><center>部門番号</center></th>
+       <th width="200" height="50"><center>部門名</center></th>
    </tr>
+   <% @departments.each do |department| %>
    <tr>
-       <td><center><%= department.id %></center></td>
-       <td><center><%= department.name %></center></td>
+       <td width="100" height="50"><center><%= link_to department.id,admin_department_path(department) %></center></td>
+       <td width="100" height="50"><center><%= link_to department.department_number,admin_department_path(department) %></center></td>
+       <td width="200" height="50"><center><%= link_to department.name,admin_department_path(department) %></center></td>
    </tr>
+   <% end %>
 </table>
-<% end %>
-<% end %>
 </center>

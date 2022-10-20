@@ -14,11 +14,16 @@
 		<% if @items.first %> <!-- @item.existsと同義、SQL1個分削減(?) -->
 			<div class="items">
 				<% @items.each do |item| %>
-					<%= link_to item_path(item) do %>
-						<%= image_tag item.image, format: "jpeg", fallback: "no-image.png", size: "200x200" %>
-						<p>部品名</p>
-						<p><%= item.name %></p>
-						<p>在庫状況</p>
+				<%= link_to item_path(item) do %>
+				<table>
+				<tr>
+				<th>
+						<%= image_tag item.image, format: "jpeg", fallback: "no-image.png", size: "200x200" %><br>
+						<center><%= item.name %></center></th>
+							</tr>
+							<tr>
+								<th>
+							<center>
 						<p>
 							<% if item.is_active? %>
 								<span class="text-active">在庫あり</span>
@@ -26,10 +31,14 @@
 								<span class="text-invalid">在庫なし</span>
 							<% end %>
 						</p>
-					<% end %>
+						</center>
+						</th>
+						</tr>
+				</table>
+				<% end %>
 				<% end %>
 				</left>
-			<%= will_paginate @items, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
+			<%#= will_paginate @items, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
 		 </div>
 		<% else %>
 			<h3>対応する商品はありませんでした。</h3>

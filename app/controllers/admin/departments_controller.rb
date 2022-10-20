@@ -47,6 +47,12 @@ class Admin::DepartmentsController < ApplicationController
     department.destroy# データ（レコード）を削除
     redirect_to admin_department_index_path  # 投稿一覧画面へリダイレクト
   end
+  
+  def search
+    @department = Department.search(params[:keyword])
+    @keyword = params[:keyword]
+    render "index"
+  end
 
   private
 

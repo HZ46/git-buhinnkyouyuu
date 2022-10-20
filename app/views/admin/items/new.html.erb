@@ -1,4 +1,5 @@
 <h2 class="section-ttl">商品新規登録</h2>
+<center>
   <%= form_with model: @item, url: admin_items_path do |f| %>
   <p>部品画像</p>
       <%= f.file_field :image, accept: "image/*" %>
@@ -14,6 +15,7 @@
 　　　</label>
 　　　<label>
 　　　    <%= f.radio_button :is_active, "false" %> 在庫なし
-　　　</label>
-      <%= f.submit '登録' %>
+　　　</label><br>
+      <%= f.submit '登録',class: "btn btn-success" %>
   <% end %>
+  </center>

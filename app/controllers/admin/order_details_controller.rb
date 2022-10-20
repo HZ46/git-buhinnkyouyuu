@@ -15,6 +15,13 @@ class Admin::OrderDetailsController < ApplicationController
        @order.status = :preparing_for_delivery
        @order.save
      end
+     
+     if @order.order_details.count == @order_details.where(making_status: "deal_closed").count
+       @order.status = :delivered
+       @order.save
+     end
+     
+     
     redirect_to admin_order_path(@order_detail.order.id)
    end
 

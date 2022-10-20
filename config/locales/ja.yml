@@ -10,6 +10,7 @@
           cannot_start: '着手不可'
           pikking: 'ピッキング中'
           completed: '製作完了'
+          deal_closed: '取引成立'
     will_paginate:
       previous_label: '前'
       next_label: '次'

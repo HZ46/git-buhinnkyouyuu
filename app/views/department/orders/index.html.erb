@@ -1,34 +1,37 @@
 <section class="inner">
 	<h2 class="section-ttl">注文履歴一覧</h2>
-	<table class="orders has_border">
+	<center>
+	<table border="1">
 		<thead>
 			<tr>
-				<th>注文日</th>
-				<th>配送先</th>
-				<th>注文商品</th>
-				<th>ステータス</th>
-				<th>注文詳細</th>
+				<th><center>注文日</center></th>
+				<th><center>配送先</center></th>
+				<th><center>注文商品</center></th>
+				<th><center>ステータス</center></th>
+				<th><center>注文詳細</center></th>
 			</tr>
 		</thead>
 		<tbody>
 			<% @orders.each do |order| %>
 				<tr>
-					<td><%= order.created_at.strftime("%Y年%m月%d日") %></td>
+					<td><center><%= order.created_at.strftime("%Y年%m月%d日") %></center>
 					<td>
-						<%= order.delivery_department %><br>
+						<center><%= order.delivery_department %></center>
 					</td>
 					<td>
 						<% order.order_details.each do |order_detail| %>
-							<p><%= order_detail.item.name %></p>
+						<center><%= order_detail.item.name %></center>
 						<% end %>
 					</td>
-					<td class="text-center"><%= order.status_i18n %></td>
-					<td class="text-center">
+					<td><center><%= order.status_i18n %></center></td>
+					<td><center>
 						<%= link_to "表示する", order_path(order), class: "btn btn-primary" %>
+						</center>
 					</td>
 				</tr>
 			<% end %>
 		</tbody>
 	</table>
 	<%#= paginate @orders %>
+	</center>
 </section>

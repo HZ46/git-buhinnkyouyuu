@@ -7,9 +7,11 @@
   <% end %>
       </div>
   </center>
-			<h3 class="text-right"><%= link_to "+", new_admin_item_path, class: "new_admin_item" %></h3>
+			<h3 class="text-right"><%= link_to new_admin_item_path do %>
+			<i class="fas fa-plus-circle"></i>
+			<% end %></h3>
 			 <% @items.each do |item| %>
-			<table border="1">
+			<table border="1" align="left">
 				<tr>
           <th>
           	部品画像・部品名
@@ -49,9 +51,9 @@
 					</tr>
 			 <% end %>
 			</table>
-		
+
 					<%= will_paginate @items, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
-		
+
 						<% if @items.first %> <!-- @item.existsと同義、SQL1個分削減(?) -->
 					<%#= paginate @items %>
 				<% else %>

@@ -2,19 +2,15 @@
   <% if flash[:notice] %>
     <p class="text-active"><%= flash[:notice] %></p>
   <% end %>
+  <center>
 	<h2>部門ページ</h2>
 		<table>
-			<thead>
-				<th></th>
-				<th></th>
-			</thead>
-			<tbody>
 				<tr>
-					<td>部門名</td>
+					<th>部門名</th>
 					<td><%= @department.name %></td>
 				</tr>
 			</tbody>
-		</table>
+		</table><br>
 		<table>
 	  ブックマーク一覧
 	  <tr>
@@ -26,9 +22,9 @@
 	  </tr>
 	    <% end %>
 	  </tbody>
-	</table>
+	</table><br><br>
 	<div class="flex">
-		<%#= link_to "配送先編集", addresses_path, class: "btn btn-primary" %>
 		<%= link_to "注文履歴一覧", orders_path, class: "btn btn-primary ml2" %>
 	</div>
+	</center>
 </div>

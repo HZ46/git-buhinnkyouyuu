@@ -3,16 +3,22 @@
 		<h2 class="section-ttl"><%= @item.name %></h2>
 		<%#= render 'layouts/error_messages', resource: @cart_item %>
 		<div class="flex">
-			<%= image_tag @item.image, class: "item_image" %>
+			<%= image_tag @item.image, size: "200x200" %>
 			<div class="item_info">
 				<h4><%= @item.introduction %></h4>
-				<p>
 					<% if @item.is_active? %>
 					<span class="text-active">在庫あり</span>
 					<% else %>
 					<span class="text-invalid">在庫なし</span>
 					<% end %>
-				</p><br>
+				<br>
+<center><%= @item.name %><br><br>
+    <% if @item.bookmarked_by?(current_department) %>
+      <%= link_to "ブックマークを外す", item_bookmarks_path(@item), method: :delete %>
+    <% else %>
+      <%= link_to "ブックマーク", item_bookmarks_path(@item), method: :post %>
+    <% end %>
+</center><br>
 					<% cart_item = current_department.has_in_cart(@item) %>
 					<% if cart_item %>
 					<%= form_with model: @cart_item, url: cart_items_path do |f| %>
@@ -33,18 +39,6 @@
 					<% else %>
 						<p class="bold">こちらの商品は、現在在庫がありません。</p>
 					<% end %>
-
-					<tbody>
-  <tr>
-    <td><%= @item.name %></td>
-    <td><%#= link_to "編集", edit_item_path(@item) %></td>
-    <% if @item.bookmarked_by?(current_department) %>
-      <td><%= link_to "ブックマークを外す", item_bookmarks_path(@item), method: :delete %></td>
-    <% else %>
-      <td><%= link_to "ブックマーク", item_bookmarks_path(@item), method: :post %></td>
-    <% end %>
-  </tr>
-</tbody>
 			</div>
 		</div>
 	</div>
