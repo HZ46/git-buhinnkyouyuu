@@ -1,13 +1,13 @@
 <h2 class="section-ttl">部門新規登録</h2>
 <center>
   <%= form_with model: @department, url: admin_departments_path do |f| %>
-   <p>部門名</p>
-      <%= f.text_field :name %>
-   <p>部門番号</p>          
-      <%= f.text_field :department_number %>
-   <p>パスワード</p>
-      <%= f.password_field :password %>
-   <p>パスワード確認</p>
+   部門名<br>
+      <%= f.text_field :name %><br><br>
+   部門番号<br>
+      <%= f.text_field :department_number %><br><br>
+   パスワード<br>
+      <%= f.password_field :password %><br><br>
+   パスワード確認<br>
       <%= f.password_field :password_confirmation, autocomplete: "new-password" %><br><br>
       <%= f.submit '登録',class:"btn btn-success" %>
   <% end %>

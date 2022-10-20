@@ -20,7 +20,9 @@ Rails.application.routes.draw do
     resources :items, except: [:destroy]
     resources :orders, only: [:index, :show, :update]
     resources :production, only: [:update]
-    resources :departments
+    resources :departments do
+      get :search, on: :collection
+    end
     resources :order_details, only: [:update]
   end
 

@@ -3,22 +3,14 @@
     <p class="text-active"><%= flash[:notice] %></p>
   <% end %>
   <center>
-	<h2>部門ページ</h2>
+	<h2>部門ページ(<%= @department.name %>)</h2>
+		
+		<h3>ブックマーク一覧</h3>
 		<table>
-				<tr>
-					<th>部門名</th>
-					<td><%= @department.name %></td>
-				</tr>
-			</tbody>
-		</table><br>
-		<table>
-	  ブックマーク一覧
-	  <tr>
-	    <th>部品名</th>
-	  </tr>
 	    <% @bookmarks.each do |bookmark| %>
+
 	  <tr>
-	    <td><%= bookmark.item.name %></td>
+	    <td><%= link_to bookmark.item.name,item_path(bookmark.item) %></td>
 	  </tr>
 	    <% end %>
 	  </tbody>

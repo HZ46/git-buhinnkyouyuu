@@ -1,7 +1,8 @@
 class Department::ItemsController < ApplicationController
-   def index
-     @items = Item.all.paginate(page: params[:page])
-   end
+  def index
+    @items = Item.all.paginate(page: params[:page])
+  end
+
 
    def search
     @items = Item.search(params[:keyword])

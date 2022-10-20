@@ -20,11 +20,11 @@ class Admin::DepartmentsController < ApplicationController
   end
 
   def index
-    @departments = Department.all
+    @departments = Department.all.order(:department_number)
   end
 
   def show
-   
+
     @department = Department.find(params[:id])
   end
 
@@ -34,10 +34,10 @@ class Admin::DepartmentsController < ApplicationController
 
   def update
     @department =  Department.find(params[:id])
-    if 
+    if
      @department.update(depart_params)
      redirect_to admin_department_path(@department)
-    else 
+    else
      render :edit
     end
   end
@@ -47,9 +47,9 @@ class Admin::DepartmentsController < ApplicationController
     department.destroy# データ（レコード）を削除
     redirect_to admin_department_index_path  # 投稿一覧画面へリダイレクト
   end
-  
+
   def search
-    @department = Department.search(params[:keyword])
+    @departments = Department.search(params[:keyword])
     @keyword = params[:keyword]
     render "index"
   end

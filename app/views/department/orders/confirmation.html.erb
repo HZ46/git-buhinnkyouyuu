@@ -20,12 +20,14 @@
 				<% end %>
 			</tbody>
 		</table>
+		<br><br>
 	<%= form_with model: @order, url: orders_path do |f| %>
 		<div class="field">
 			<label>お届け先</label>
 			<%# MODELのバリデーションのinclusionの編集も忘れずに %>
 			<%= f.select :delivery_department, ['1階南棟', '1階北棟', '2階南棟', '2階北棟'], {include_blank: 'お届け先を選択してください'} %>
 		</div>
+		<br><br>
 		<div class="actions text-center">
 			<%= f.submit "注文を確定する", class: "btn btn-primary submit_to_create_order" %>
 		</div>

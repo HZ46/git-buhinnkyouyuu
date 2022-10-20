@@ -10,49 +10,54 @@
 			<h3 class="text-right"><%= link_to new_admin_item_path do %>
 			<i class="fas fa-plus-circle"></i>
 			<% end %></h3>
-			 <% @items.each do |item| %>
-			<table border="1" align="left">
-				<tr>
-          <th>
-          	部品画像・部品名
-          </th>
-					 <td>
-					 	<%= link_to admin_item_path(item) do %>
-					  <% if item.image.attached? %>
-					    <%= image_tag item.image, size: "200x200" %>
-					  <% else %>
-					    <%= image_tag 'no_image', size: "200x200" %>
-					  <% end %><br>
-					  <center>
-					    <%= item.name %>
-					  </center>
-					  <% end %>
-					 </td>
-					 </tr>
-					 <tr>
-					 <th>数量</th>
-					 <td>
-					 	<center>
-					   <%= item.amount %>
-					   </center>
-					 </td>
-					 </tr>
-					 <tr>
-					 <th>在庫状況</th>
-					 <td>
-					 	<center>
-						<% if item.is_active? %>
-							<span class="text-active">在庫あり</span>
-						<% else %>
-							<span class="text-invalid">在庫なし</span>
-						<% end %>
-						</center>
-					</td>
-					</tr>
-			 <% end %>
+				<table border="1">
+					<tr>
+	          <th>
+	          	部品画像・部品名
+	          </th>
+	          <% @items.each do |item| %>
+						 <td>
+						 	<%= link_to admin_item_path(item) do %>
+						  <% if item.image.attached? %>
+						    <%= image_tag item.image, size: "200x200" %>
+						  <% else %>
+						    <%= image_tag 'no_image', size: "200x200" %>
+						  <% end %><br>
+						  <center>
+						    <%= item.name %>
+						  </center>
+						  <% end %>
+						 </td>
+						 <% end %>
+						 </tr>
+						 <tr>
+						 <th>数量</th>
+						 <% @items.each do |item| %>
+						 <td>
+						 	<center>
+						   <%= item.amount %>
+						   </center>
+						 </td>
+						 <% end %>
+						 </tr>
+						 <tr>
+						 <th>在庫状況</th>
+						 <% @items.each do |item| %>
+						 <td>
+						 	<center>
+							<% if item.is_active? %>
+								<span class="text-active">在庫あり</span>
+							<% else %>
+								<span class="text-invalid">在庫なし</span>
+							<% end %>
+							</center>
+							</td>
+							<% end %>
+							</tr>
 			</table>
+       <%= will_paginate(@items, class: "pagination justify-content-center",renderer: WillPaginate::ActionView::Bootstrap4LinkRenderer) %>
+					<%#= will_paginate @items, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
 
-					<%= will_paginate @items, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
 
 						<% if @items.first %> <!-- @item.existsと同義、SQL1個分削減(?) -->
 					<%#= paginate @items %>

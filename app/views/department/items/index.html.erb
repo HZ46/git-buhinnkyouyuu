@@ -9,39 +9,39 @@
 		        <% end %>
 		    </div>
 		   </center>
-
-<left>
-		<% if @items.first %> <!-- @item.existsと同義、SQL1個分削減(?) -->
-			<div class="items">
-				<% @items.each do |item| %>
-				<%= link_to item_path(item) do %>
-				<table>
-				<tr>
-				<th>
-						<%= image_tag item.image, format: "jpeg", fallback: "no-image.png", size: "200x200" %><br>
-						<center><%= item.name %></center></th>
-							</tr>
-							<tr>
-								<th>
-							<center>
-						<p>
+		<table>
+					<tr>
+				 <% @items.each do |item| %>
+			  	 <td>
+			  	 	<%= link_to item_path(item) do %>
+			  	 	<%= image_tag item.image, format: "jpeg", fallback: "no-image.png", size: "200x200" %><br>
+				  <center><%= item.name %></center>
+				  <% end %>
+				 </td>
+				 <% end %>
+				</tr><tr>
+					
+						 <% @items.each do |item| %>
+						 <td>
+						 	<center>
 							<% if item.is_active? %>
 								<span class="text-active">在庫あり</span>
 							<% else %>
 								<span class="text-invalid">在庫なし</span>
 							<% end %>
-						</p>
-						</center>
-						</th>
-						</tr>
-				</table>
-				<% end %>
-				<% end %>
-				</left>
-			<%#= will_paginate @items, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
-		 </div>
-		<% else %>
-			<h3>対応する商品はありませんでした。</h3>
-		<% end %>
-	</div>
+							</center>
+							</td>
+							<% end %>
+							</tr>
+			</table>
+
+
+	<%#= will_paginate @items, previous_label: '&#8592; &nbsp;前', next_label: '次 &#8594;', inner_window: 1, outer_window: 0 %>
+	<%= will_paginate(@items, class: "pagination justify-content-center",renderer: WillPaginate::ActionView::Bootstrap4LinkRenderer) %>
+	<%#= will_paginate @items, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
+<% if @items.first %>
+<% else %>
+<h3>対応する商品はありませんでした。</h3>
+<% end %>
+</div>
 </section>
