@@ -15,7 +15,7 @@
 					<% item = cart_item.item %>
 					<tr>
 						<td>
-							<%= image_tag item.image, size: "200x200" %><br>
+							<%= image_tag item.image, size: "100x100" %><br>
 						    <center><%= link_to item.name, item_path(item) %></center>
 						</td>
 							<%= form_with model: cart_item do |f| %>

@@ -27,24 +27,30 @@ class Department::OrdersController < ApplicationController
   end
 
   def create
+    @not_order_item = []
     @order = current_department.orders.new(order_params)
     if @order.save
       # @order.create_order_details(current_department)
-
       current_department.cart_items.each do |item|
+        target_item = Item.find(item.item_id)
+        if item.amount <= target_item.amount
         OrderDetail.create!([
             order_id: @order.id,
             item_id: item.item_id,
             amount: item.amount
           ])
 
-       if target_item = Item.find(item.item_id)
-        target_item.amount = target_item.amount - item.amount
-        if target_item.amount == 0
-           target_item.is_active = false
+         if target_item
+          target_item.amount = target_item.amount - item.amount
+          if target_item.amount == 0
+             target_item.is_active = false
+          end
+          target_item.save!
+         end
+        else
+
+          @not_order_item.push(target_item)
         end
-        target_item.save!
-       end
 
        #if target_item = Item.find(item.item_id)
         # target_item.amount = target_item.amount < item.amount
@@ -57,7 +63,7 @@ class Department::OrdersController < ApplicationController
 
 
 
-      redirect_to thanks_path
+      render :thanks
     else
       @cart_items = current_department.cart_items
       render :confirmation

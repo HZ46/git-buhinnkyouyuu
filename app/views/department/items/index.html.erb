@@ -9,10 +9,10 @@
 		        <% end %>
 		    </div>
 		   </center>
-		<table>
+		<table border="0">
 					<tr>
 				 <% @items.each do |item| %>
-			  	 <td>
+			  	 <td class="px-2">
 			  	 	<%= link_to item_path(item) do %>
 			  	 	<%= image_tag item.image, format: "jpeg", fallback: "no-image.png", size: "200x200" %><br>
 				  <center><%= item.name %></center>
@@ -20,7 +20,7 @@
 				 </td>
 				 <% end %>
 				</tr><tr>
-					
+
 						 <% @items.each do |item| %>
 						 <td>
 						 	<center>

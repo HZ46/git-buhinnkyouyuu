@@ -1,6 +1,11 @@
 <section class="inner" id="thanks">
 	<div class="text-center">
 		<h2 class="section-ttl">ご注文ありがとうございました！</h2><br>
+		<% if !@not_order_item.nil? %>
+		 <% @not_order_item.each do |item| %>
+		  <p style="color: red">なお、<%= item.name %>は在庫切れにより購入が出来ませんでした。</p>
+		 <% end %>
+		<% end %>
 		<%= link_to "続けて注文する", items_path, class: "btn btn-primary" %>
 	</div>
 </section>
