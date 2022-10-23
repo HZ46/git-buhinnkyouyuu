@@ -48,7 +48,13 @@ class Department::OrdersController < ApplicationController
           target_item.save!
          end
         else
-
+         OrderDetail.create!([
+            order_id: @order.id,
+            item_id: item.item_id,
+            amount: item.amount,
+            making_status: 99
+          ])
+          @order.cannot_start!
           @not_order_item.push(target_item)
         end
 

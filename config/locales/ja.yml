@@ -2,6 +2,7 @@
     enums:
       order:
         status:
+          cannot_start: '対応不可'
           accepting: '承り中'
           preparing_for_delivery: 'お届け準備中'
           delivered: 'お届け済み'
@@ -11,6 +12,7 @@
           pikking: 'ピッキング中'
           completed: '製作完了'
           deal_closed: '取引成立'
+          sold_out: '売り切れ'
     will_paginate:
       previous_label: '前'
       next_label: '次'

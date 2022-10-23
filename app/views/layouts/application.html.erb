@@ -14,7 +14,9 @@
   <header>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-      <%= link_to "ひな工業", root_path, class: "navbar-brand" %>
+      <%= link_to root_path, class: "navbar-brand" do %>
+          <%= image_tag asset_path('sp.png'), size:"50x50" %> <%#画像入れたいときのコードの書き方%>
+      <% end %>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -81,7 +83,7 @@
   <div class="container mt-5">
   	<div class="row">
     	<div class="mx-auto">
-    		<p>ひな工業</p>
+    		<p>SUNNY PLACE COMPANY</p>
     	</div>
     </div>
   </div>

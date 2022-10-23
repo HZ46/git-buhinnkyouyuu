@@ -5,7 +5,7 @@ class Department::ItemsController < ApplicationController
 
 
    def search
-    @items = Item.search(params[:keyword])
+    @items = Item.search(params[:keyword]).paginate(page: params[:page], per_page: 7)
     @keyword = params[:keyword]
     render "index"
    end
