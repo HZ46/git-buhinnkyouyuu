@@ -7,7 +7,7 @@ class Admin::ItemsController < ApplicationController
   end
 
   def index
-    @items = Item.all.paginate(page: params[:page])
+    @items = Item.all.paginate(page: params[:page], per_page: 6)
   end
 
   def create

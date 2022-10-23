@@ -4,13 +4,13 @@
   <% end %>
   <center>
 	<h2>部門ページ(<%= @department.name %>)</h2>
-		
-		<h3>ブックマーク一覧</h3>
+		<br><br>
+		<h2>ブックマーク一覧</h2><br>
 		<table>
 	    <% @bookmarks.each do |bookmark| %>
 
 	  <tr>
-	    <td><%= link_to bookmark.item.name,item_path(bookmark.item) %></td>
+	    <td><h4><%= link_to bookmark.item.name,item_path(bookmark.item) %></h4></td>
 	  </tr>
 	    <% end %>
 	  </tbody>

@@ -10,13 +10,14 @@
 			<h3 class="text-right"><%= link_to new_admin_item_path do %>
 			<i class="fas fa-plus-circle"></i>
 			<% end %></h3>
+			<br>
 				<table border="1">
 					<tr>
-	          <th>
+	          <th class="px-2">
 	          	部品画像・部品名
 	          </th>
 	          <% @items.each do |item| %>
-						 <td>
+						 <td class="px-2">
 						 	<%= link_to admin_item_path(item) do %>
 						  <% if item.image.attached? %>
 						    <%= image_tag item.image, size: "200x200" %>
