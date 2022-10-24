@@ -1,5 +1,6 @@
   <h1 class="admin_top-txt">
   	注文履歴一覧
+  	</h1>
   	<center>
       <table border="1">
         <tr>
@@ -16,6 +17,5 @@
   	<% end %>
   	  </table>
   	  </center>
-  </h1>
   <%= will_paginate(@orders, class: "pagination justify-content-center",renderer: WillPaginate::ActionView::Bootstrap4LinkRenderer) %>
 </section>

@@ -1,9 +1,9 @@
 class Admin::HomesController < ApplicationController
    before_action :authenticate_admin!
   def top
-    @orders = Order.all.paginate(page: params[:page])
+    @orders = Order.all.paginate(page: params[:page], per_page: 10)
   end
-  
+
   def search
     @model = params['search']['model']
     @content = params['search']['content']

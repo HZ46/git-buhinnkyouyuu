@@ -20,7 +20,8 @@ class Admin::DepartmentsController < ApplicationController
   end
 
   def index
-    @departments = Department.all.order(:department_number)
+    #@departments = Department.all.order(:department_number)
+    @departments = Department.all.order(:department_number).paginate(page: params[:page], per_page: 6)
   end
 
   def show
@@ -49,7 +50,7 @@ class Admin::DepartmentsController < ApplicationController
   end
 
   def search
-    @departments = Department.search(params[:keyword])
+    @departments = Department.search(params[:keyword]).paginate(page: params[:page], per_page: 6)
     @keyword = params[:keyword]
     render "index"
   end
