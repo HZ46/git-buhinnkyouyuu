@@ -1,6 +1,6 @@
 <section class="wrapper flex">
 	<div class="content">
-		<h2 class="section-ttl">商品一覧</h2>
+		<h1 class="section-ttl">商品一覧</h1>
 		<center>
 			<div class="search-form">
 		        <%= form_with url: search_path, method: :get, local: true do |f| %>
@@ -24,8 +24,9 @@
 				</tr><tr>
 
 						 <% @items.each do |item| %>
-						 <td>
+						 <td><br>
 						 	<center>
+						 		あと<%= item.amount %>点<br>
 							<% if item.is_active? %>
 								<span class="text-active">在庫あり</span>
 							<% else %>
@@ -41,9 +42,10 @@
 	<%#= will_paginate @items, previous_label: '&#8592; &nbsp;前', next_label: '次 &#8594;', inner_window: 1, outer_window: 0 %>
 	<%= will_paginate(@items, class: "pagination justify-content-center",renderer: WillPaginate::ActionView::Bootstrap4LinkRenderer) %>
 	<%#= will_paginate @items, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
-<% if @items.first %>
+<center><% if @items.first %>
 <% else %>
 <h3>対応する商品はありませんでした。</h3>
 <% end %>
+</center>
 </div>
 </section>

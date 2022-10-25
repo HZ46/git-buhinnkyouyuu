@@ -25,18 +25,19 @@
 					<%= form_with model: @cart_item, url: cart_items_path do |f| %>
 							<p>数量を選択して下さい。</p>
 							<p style="color: red"><%= alert %></p>
-							<%= f.select :amount, [*(1..10)], {selected: 1} %>
-							<%= f.hidden_field :item_id, :value => @item.id %>
+							<%= f.select :amount, [*(1..100)], {selected: 1} %>
+							<%= f.hidden_field :item_id, :value => @item.id %><br><br>
 							<%= f.submit "数量変更", class: "btn btn-primary" %>
 						<% end %>
 					<% elsif @item.is_active? %>
 						<%= form_with model: @cart_item, url: cart_items_path do |f| %>
 							<p>数量を選択して下さい。</p>
 							<p style="color: red"><%= alert %></p>
-							<%= f.select :amount, [*(1..10)], {selected: 1} %>
-							<%= f.hidden_field :item_id, :value => @item.id %>
+							<%= f.select :amount, [*(1..100)], {selected: 1} %>
+							<%= f.hidden_field :item_id, :value => @item.id %><br><br>
 							<%= f.submit "カートに入れる", class: "btn btn-primary" %>
 						<% end %>
+						<br><br><%= link_to '戻る', items_path, class: "btn btn-success" %>
 					<% else %>
 						<p class="bold">こちらの商品は、現在在庫がありません。</p>
 					<% end %>

@@ -8,7 +8,7 @@
           delivered: 'お届け済み'
       order_detail:
         making_status:
-          cannot_start: '着手不可'
+          before_start: '製作待ち'
           pikking: 'ピッキング中'
           completed: '製作完了'
           deal_closed: '取引成立'

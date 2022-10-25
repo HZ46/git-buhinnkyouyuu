@@ -2,24 +2,23 @@
 <center>
  <table border="1">
   <tr>
-   <th>
-    部門名
-   </th>
+   <th><center>部門名</center></th>
    <td>
-    <%= @department.name %>
+    <center><%= @department.name %></center>
    </td>
  </tr>
  <tr>
   <th>
-   部門番号
+   <center>部門番号</center>
   </th>
   <td>
    <center>
- <%= @department.department_number %>
+ <center><%= @department.department_number %></center>
  </center>
  </td>
  </tr>
  </table><br>
  <%= link_to "編集する", edit_admin_department_path(@department), class: "btn btn-success" %>
+ <br><br><%= link_to '戻る', admin_departments_path, class: "btn btn-primary" %>
 </center>
 

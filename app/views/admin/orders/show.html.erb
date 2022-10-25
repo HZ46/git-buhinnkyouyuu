@@ -1,54 +1,38 @@
 <section class="inner">
-	<h2 class="section-ttl">注文履歴詳細</h2>
+	<h1 class="section-ttl">注文履歴詳細</h1>
 	<center>
 		注文情報
 	<table border="1">
-		<thead>
-			<tr>
-				<th></th>
-				<th></th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
+	<tr>
 				<td>注文日時</td>
 				<td><%= @order.created_at.strftime("%Y年%m月%d日") %></td>
 			</tr>
 			<tr>
 				<td>購入者</td>
-				<td><%= link_to @department.name,admin_department_path %></td>
+				<td><center><%= link_to @department.name,admin_department_path %></center></td>
 			</tr>
 			<tr>
 				<td>配送先</td>
 				<td>
-					<%= @order.delivery_department %><br>
+					<center><%= @order.delivery_department %></center>
 				</td>
 			</tr>
-			<tr>
-				<td>
-					<%#= form_with model:@order, url: admin_order_path(@order) do |f| %>
-						<%#= f.select :status, Order.statuses.keys.map {|k| [I18n.t("enums.order.status.#{k}"), k]} %>
-						<%#= f.submit "更新", class: "btn btn-primary" %>
-					<%# end %>
-				</td>
-			</tr>
-		</tbody>
 	</table><br>
 	<div class="flex">
 		注文内容
 		<table border="1">
 			<thead>
 				<tr>
-					<th>商品名</th>
-					<th>数量</th>
-					<th></th>
+					<th><center>商品名</center></th>
+					<th><center>数量</center></th>
+					<th><center>進捗</center></th>
 				</tr>
 			</thead>
 			<tbody>
 				<% @order_details.each do |order_detail| %>
 					<tr>
-						<td><%= link_to order_detail.item.name, admin_item_path(order_detail.item) %></td>
-						<td class="text-center"><%= order_detail.amount %></td>
+						<td><center><%= link_to order_detail.item.name, admin_item_path(order_detail.item) %></center></td>
+						<td><center><%= order_detail.amount %></center></td>
 
 						<td>
 							<%= form_with model: order_detail, url: admin_order_detail_path(order_detail) do |f| %>
@@ -61,5 +45,6 @@
 			</tbody>
 		</table>
 	</div>
+	<br><br><%= link_to '戻る', admin_top_path, class: "btn btn-success" %>
 	</center>
 </section>

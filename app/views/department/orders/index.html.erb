@@ -1,5 +1,5 @@
 <section class="inner">
-	<h2 class="section-ttl">注文履歴一覧</h2>
+	<h1 class="section-ttl">注文履歴一覧</h1>
 	<center>
 	<table border="1">
 		<thead>
@@ -31,7 +31,7 @@
 				</tr>
 			<% end %>
 		</tbody>
-	</table>
-	<%#= paginate @orders %>
+	</table><br><br>
+	<%= link_to '戻る', departmentpage_path, class: "btn btn-success" %>
 	</center>
 </section>

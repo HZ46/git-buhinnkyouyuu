@@ -3,7 +3,9 @@
 		<h2 class="section-ttl">ご注文ありがとうございました！</h2><br>
 		<% if !@not_order_item.nil? %>
 		 <% @not_order_item.each do |item| %>
-		  <p style="color: red">なお、<%= item.name %>は在庫切れにより購入が出来ませんでした。</p>
+		  <p style="color: red"><%= item.name %>は在庫切れにより購入が出来ませんでした。<br>
+		  なお、複数の部品をご注文の場合は在庫切れでなかった部品のみのお届けとなります。<br>
+		  在庫切れでもご注文は承ることが出来ております。その際は最長で2日間ほどお時間をいただくことがございますのでご了承下さい。</p>
 		 <% end %>
 		<% end %>
 		<%= link_to "続けて注文する", items_path, class: "btn btn-primary" %>

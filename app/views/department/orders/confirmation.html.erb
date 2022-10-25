@@ -1,11 +1,11 @@
 <section class="inner">
-	<h2 class="section-ttl">注文情報確認</h2>
+	<h1 class="section-ttl">注文情報確認</h1>
 	<center>
 		<table border="1">
 			<thead>
 				<tr>
-					<th>商品名</th>
-					<th>数量</th>
+					<th><center>商品名</center></th>
+					<th><center>数量</center></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -13,7 +13,7 @@
 					<% item = cart_item.item %>
 					<tr>
 						<td>
-							<%= image_tag item.image, size: "200x200" %><br>
+							<%= image_tag item.image, size: "100x100" %><br>
 						  <center><%= item.name %></center></td>
 						<td><center><%= cart_item.amount %></center></td>
 					</tr>
@@ -29,6 +29,7 @@
 		</div>
 		<br><br>
 		<div class="actions text-center">
+			<%= link_to 'ショッピングカートに戻る',cart_items_path, class: "btn btn-success" %><br><br>
 			<%= f.submit "注文を確定する", class: "btn btn-primary submit_to_create_order" %>
 		</div>
 	<% end %>

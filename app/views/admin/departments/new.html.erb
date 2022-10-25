@@ -1,4 +1,4 @@
-<h2 class="section-ttl">部門新規登録</h2>
+<h1 class="section-ttl">部門新規登録</h1>
 <center>
   <%= form_with model: @department, url: admin_departments_path do |f| %>
    部門名<br>
@@ -8,7 +8,9 @@
    パスワード<br>
       <%= f.password_field :password %><br><br>
    パスワード確認<br>
-      <%= f.password_field :password_confirmation, autocomplete: "new-password" %><br><br>
-      <%= f.submit '登録',class:"btn btn-success" %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+       <br><br><%= link_to '戻る', admin_departments_path, class: "btn btn-primary" %>&emsp;&emsp;&emsp;
+       <%= f.submit '登録',class:"btn btn-success" %>
   <% end %>
+  
   </center>
