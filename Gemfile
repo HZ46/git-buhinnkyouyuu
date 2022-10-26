@@ -62,6 +62,11 @@ gem 'mini_magick'
 gem 'will_paginate',           '3.1.7'
 gem 'bootstrap-will_paginate', '1.0.0'
 
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
 
-
-
+gem "net-smtp"
+gem "net-pop"
+gem "net-imap"
