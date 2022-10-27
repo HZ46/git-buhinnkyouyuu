@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 2022_10_12_112150) do
 
   create_table "departments", force: :cascade do |t|
     t.integer "department_number", null: false
-    t.string "encrypted_password", default: "", null: false
+    t.string "encrypted_password", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
