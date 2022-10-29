@@ -62,6 +62,6 @@ class Admin::DepartmentsController < ApplicationController
   end
 
   def depart_params
-    params.require(:department).permit(:name, :password)
+    params.require(:department).permit(:name, :department_number)
   end
 end
