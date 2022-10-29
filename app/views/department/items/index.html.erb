@@ -1,11 +1,11 @@
 <section class="wrapper flex">
 	<div class="content">
-		<h1 class="section-ttl">商品一覧</h1>
+		<h1 class="section-ttl">部品一覧</h1>
 		<center>
 			<div class="search-form">
 		        <%= form_with url: search_path, method: :get, local: true do |f| %>
 			    <%#= f.text_field :keyword, value: @keyword, :size=>"30" :デフォルトの検索機能のコード %>
-			    <%= f.text_field :keyword, :placeholder => "商品名を入力" ,value: @keyword, :size=>"30" %>
+			    <%= f.text_field :keyword, :placeholder => "部品名を入力" ,value: @keyword, :size=>"30" %>
 			    <%= f.submit "検索",class: "btn btn-primary" %>
 		        <% end %>
 		    </div>
@@ -44,7 +44,7 @@
 	<%#= will_paginate @items, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
 <center><% if @items.first %>
 <% else %>
-<h3>対応する商品はありませんでした。</h3>
+<h3>対応する商品はありませんでした</h3>
 <% end %>
 </center>
 </div>

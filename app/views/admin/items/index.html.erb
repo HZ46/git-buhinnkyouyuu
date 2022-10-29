@@ -1,8 +1,8 @@
-<h1>商品一覧<%#= @all_items_count %></h1>
+<h1>部品一覧<%#= @all_items_count %></h1>
 	<center>
 			<div class="search-form">
   <%= form_with url: search_path, method: :get, local: true do |f| %>
-    <%= f.text_field :keyword, :placeholder => "商品名を入力" ,value: @keyword, :size=>"30" %>
+    <%= f.text_field :keyword, :placeholder => "部品名を入力" ,value: @keyword, :size=>"30" %>
     <%= f.submit "検索",class:"btn btn-primary" %>
   <% end %>
       </div>
@@ -63,5 +63,5 @@
 						<% if @items.first %> <!-- @item.existsと同義、SQL1個分削減(?) -->
 					<%#= paginate @items %>
 				<% else %>
-					<h3>対応する商品はありませんでした。</h3>
+					<h3>対応する商品はありませんでした</h3>
 				<% end %>
