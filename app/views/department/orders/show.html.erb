@@ -19,8 +19,8 @@
 				<td><%= @order.status_i18n %></td>
 			</tr>
 		</tbody>
-	</table><br>
-	<div class="flex">
+    	</table><br>
+      <div class="flex">
 		<caption class="fz18 text-left">注文内容</caption>
 		<table border="1">
 			<thead>
@@ -43,35 +43,40 @@
 				<% end %>
 			</tbody>
 		</table>
-	</div>
-</center><br><br>
-
-<% @order.order_details.includes(:item).each do |order_detail| %>
-					<% item = order_detail.item %>
-				  <% if order_detail.making_status == "sold_out" %>
-				  <center><p style="color: red">売り切れで準備ができなかった部品があります。<br>
-在庫切れでもご注文は承ることが出来ておりますので再注文にはご注意ください。<br>
-その際は最長で2日間ほどお時間をいただくことがございますのでご了承下さい。</p>
-				  <table border="1">
-				  	<thead>
-				<tr>
-					<th><center>部品ID</center></th>
-					<th><center>商品名</center></th>
-					<th>数量</th>
-				</tr>
-			</thead>
-			<tbody>
+	  </div>
+    </center><br><br>
+    <% @order.order_details.includes(:item).each do |order_detail| %>
+	  <% item = order_detail.item %>
+		 <% if order_detail.making_status == "sold_out" %>
+		   <center>
+		   	<p style="color: red">売り切れで準備ができなかった部品があります。<br>
+				在庫切れでもご注文は承ることが出来ておりますので再注文にはご注意ください。<br>
+				その際は最長で2日間ほどお時間をいただくことがございますのでご了承下さい。</p>
+			</center>
+			<center>
+				<table border="1">
+				　<thead>
+				　 <tr>
+					   <th><center>部品ID</center></th>
+					   <th><center>商品名</center></th>
+					   <th>数量</th>
+				     </tr>
+			      </thead>
+			      <tbody>
 					<tr>
-						<td><center><%= item.id %></center></td>
-						<td>
-							<%= image_tag item.image, format: "jpeg", fallback: "no-image.png", size: "100x100" %>
+					  <td><center><%= item.id %></center></td>
+					  <td>
+						<%= image_tag item.image, format: "jpeg", fallback: "no-image.png", size: "100x100" %>
 						<center>
 						<%= link_to item.name, item_path(item) %></td>
-						<td class="text-center"><%= order_detail.amount %></center></td>
+						<td class="text-center"><%= order_detail.amount %>
+						</center>
+						</td>
 					</tr>
-					<% end %>
-				<% end %>
+		<% end %>
+	<% end %>
 				</td>
-				</table></center>
+				</table>
+				</center>
 
 </section>

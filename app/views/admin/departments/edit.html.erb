@@ -1,10 +1,11 @@
 <h1>部門編集</h1>
-<center><%= form_with model: @department, url: admin_department_path(@department) do |f| %>
- 部門名<br>
- <%= f.text_field :name %></br><br>
- 部門番号<br>
- <%= f.text_field :department_number %>
- <br><br><%= link_to '戻る', admin_departments_path, class: "btn btn-primary" %>&emsp;&emsp;&emsp;
- <%= f.submit '変更',class: "btn btn-success" %>
-<% end %>
+<center>
+ <%= form_with model: @department, url: admin_department_path(@department) do |f| %>
+   部門名<br>
+   <%= f.text_field :name %></br><br>
+   部門番号<br>
+   <%= f.text_field :department_number %><br><br>
+   <%= link_to '戻る', admin_departments_path, class: "btn btn-primary" %>&emsp;&emsp;&emsp;
+   <%= f.submit '変更',class: "btn btn-success" %>
+ <% end %>
 </center>

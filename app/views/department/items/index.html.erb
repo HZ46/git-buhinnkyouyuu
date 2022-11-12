@@ -9,43 +9,40 @@
 			    <%= f.submit "検索",class: "btn btn-primary" %>
 		        <% end %>
 		    </div>
-		   </center>
-		   <br><br>
-		<table border="0">
-					<tr>
-				 <% @items.each do |item| %>
-			  	 <td class="px-2">
-			  	 	<%= link_to item_path(item) do %>
-			  	 	<%= image_tag item.image, format: "jpeg", fallback: "no-image.png", size: "200x200" %><br>
-				  <center><%= item.name %></center>
+		 </center>
+		 <br><br>
+		 <table border="0">
+			<tr>
+			  <% @items.each do |item| %>
+			    <td class="px-2">
+			  	  <%= link_to item_path(item) do %>
+			  	    <%= image_tag item.image, format: "jpeg", fallback: "no-image.png", size: "200x200" %><br>
+				    <center><%= item.name %></center>
 				  <% end %>
 				 </td>
-				 <% end %>
-				</tr><tr>
-
-						 <% @items.each do |item| %>
-						 <td><br>
-						 	<center>
-						 		あと<%= item.amount %>点<br>
-							<% if item.is_active? %>
-								<span class="text-active">在庫あり</span>
-							<% else %>
-								<span class="text-invalid">在庫なし</span>
-							<% end %>
-							</center>
-							</td>
-							<% end %>
-							</tr>
-			</table>
-
-
-	<%#= will_paginate @items, previous_label: '&#8592; &nbsp;前', next_label: '次 &#8594;', inner_window: 1, outer_window: 0 %>
+			  <% end %>
+		    </tr>
+		    <tr>
+              <% @items.each do |item| %>
+			    <td><br>
+				  <center>
+				    あと<%= item.amount %>点<br>
+					  <% if item.is_active? %>
+						<span class="text-active">在庫あり</span>
+					  <% else %>
+						<span class="text-invalid">在庫なし</span>
+			     	  <% end %>
+			       </center>
+				</td>
+			  <% end %>
+			</tr>
+		  </table>
 	<%= will_paginate(@items, class: "pagination justify-content-center",renderer: WillPaginate::ActionView::Bootstrap4LinkRenderer) %>
-	<%#= will_paginate @items, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
-<center><% if @items.first %>
-<% else %>
-<h3>対応する商品はありませんでした</h3>
-<% end %>
-</center>
+  <center>
+	<% if @items.first %>
+	<% else %>
+	<h3>対応する商品はありませんでした</h3>
+	<% end %>
+  </center>
 </div>
 </section>

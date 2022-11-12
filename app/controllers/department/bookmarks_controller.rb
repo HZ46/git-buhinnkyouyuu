@@ -9,7 +9,7 @@ class Department::BookmarksController < ApplicationController
     end
    end
 
-  def destroy
+   def destroy
     @item = Item.find(params[:item_id])
     bookmark = @item.bookmarks.find_by(department_id: current_department.id)
     if bookmark.present?
@@ -18,5 +18,5 @@ class Department::BookmarksController < ApplicationController
     else
         redirect_to request.referer
     end
-  end
+   end
 end

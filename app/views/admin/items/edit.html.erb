@@ -1,24 +1,24 @@
 <section class="inner">
   <div class="text-center">
 	<h1 class="section-ttl"><%= @item.name %>の編集</h1>
-  <%= form_with model: @item, url: admin_item_path(@item) do |f| %>
-     部品画像<br>
-      <%= f.file_field :image, accept: "image/*" %><br><br>
-   部品名<br>
-      <%= f.text_field :name %><br><br>
-   部品説明<br>
-      <%= f.text_area :introduction, size: "40" %><br><br>
-   個数<br>
-      <%= f.text_field :amount %><br><br>
-      在庫ステータス<br>
-      <label>
-　　　　<%= f.radio_button :is_active, "true" %> 在庫あり
-　　　</label>
-　　　<label>
-　　　    <%= f.radio_button :is_active, "false" %> 在庫なし
-　　　</label>
-　　　<br><br><%= link_to '戻る', admin_departments_path, class: "btn btn-primary" %>&emsp;&emsp;&emsp;
-      <%= f.submit '登録',class: "btn btn-success" %>
-  <% end %>
+      <%= form_with model: @item, url: admin_item_path(@item) do |f| %>
+         部品画像<br>
+          <%= f.file_field :image, accept: "image/*" %><br><br>
+               部品名<br>
+               <%= f.text_field :name %><br><br>
+               部品説明<br>
+               <%= f.text_area :introduction, size: "40" %><br><br>
+               個数<br>
+               <%= f.text_field :amount %><br><br>
+               在庫ステータス<br>
+               <label>
+        　　　　<%= f.radio_button :is_active, "true" %> 在庫あり
+        　　　 </label>
+        　　　 <label>
+        　　　      <%= f.radio_button :is_active, "false" %> 在庫なし
+        　　　 </label>
+        　　　 <br><br><%= link_to '戻る', admin_departments_path, class: "btn btn-primary" %>&emsp;&emsp;&emsp;
+               <%= f.submit '登録',class: "btn btn-success" %>
+       <% end %>
   </div>
 </section>

@@ -1,6 +1,6 @@
 class Admin::OrdersController < ApplicationController
-   before_action :authenticate_admin!
-   before_action :ensure_order, only: [:show, :update]
+  before_action :authenticate_admin!
+  before_action :ensure_order, only: [:show, :update]
 
   def index
     if params[:department_id]
@@ -28,11 +28,11 @@ class Admin::OrdersController < ApplicationController
 
   private
 
-  def order_params
-    params.require(:order_detail).permit(:status)
-  end
-
-  def ensure_order
-    @order = Order.find(params[:id])
-  end
+    def order_params
+      params.require(:order_detail).permit(:status)
+    end
+  
+    def ensure_order
+      @order = Order.find(params[:id])
+    end
 end

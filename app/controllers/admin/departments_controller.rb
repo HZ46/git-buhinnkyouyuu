@@ -1,5 +1,5 @@
 class Admin::DepartmentsController < ApplicationController
-   before_action :authenticate_admin!
+  before_action :authenticate_admin!
   def top
   end
 
@@ -57,11 +57,11 @@ class Admin::DepartmentsController < ApplicationController
 
   private
 
-  def department_params
-    params.require(:department).permit(:name, :department_number, :password)
-  end
-
-  def depart_params
-    params.require(:department).permit(:name, :department_number)
-  end
+    def department_params
+      params.require(:department).permit(:name, :department_number, :password)
+    end
+  
+    def depart_params
+      params.require(:department).permit(:name, :department_number)
+    end
 end
